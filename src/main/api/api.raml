@@ -1,0 +1,112 @@
+#%RAML 1.0
+types:
+  Employee:
+    example:
+      strict: true
+      value:
+        empName: AAAA
+        empCity: ALPHARETTA
+        empPhone: "1234567890"
+    properties:
+      empName?:
+        example: Example
+        type: string
+      empCity?:
+        example: Example
+        type: string
+      empPhone?:
+        example: Example
+        type: string
+title: Employee API
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/bf1a3c2c-ed2c-46e4-a54e-a41738822ef8/
+mediaType:
+  - application/json
+version: "1"
+protocols:
+  - HTTP
+  - HTTPS
+/employee:
+  get:
+    queryParameters:
+      empName:
+        default: AAAA
+        example: Example
+        type: string
+    responses:
+      "200":
+        body:
+          application/json:
+            example:
+              strict: true
+              value:
+                empName: AAAA
+                empCity: ALPHARETTA
+                empPhone: "1234567890"
+            type: object
+    securedBy: []
+/getAllEmployees:
+  get:
+    responses:
+      "200":
+        body:
+          application/json:      
+
+/employee/save:
+  post:
+    body:
+      type: Employee
+    responses:
+      "200": {}
+      "503":
+        body:
+          application/json:
+            example:
+              strict: true
+              value:
+                success: false
+                errorMessage: service unavailable
+            type: object
+/employee/update:
+  post:
+    body:
+      type: Employee
+    responses:
+      "200": {}
+      "503":
+        body:
+          application/json:
+            example:
+              strict: true
+              value:
+                success: false
+                errorMessage: service unavailable
+            type: object
+/employee/delete:
+  post:
+    body:
+      type: Employee
+    responses:
+      "200": {}
+      "503":
+        body:
+          application/json:
+            example:
+              strict: true
+              value:
+                success: false
+                errorMessage: service unavailable
+            type: object
+annotationTypes:
+  MyGroup:
+    type: any
+(MyGroup):
+  name: Group
+  description: Group annotation
+securitySchemes:
+  SecurityScheme:
+    type: Basic Authentication
+    describedBy:
+      headers:
+        newHeader:
+          example: Example
+          type: string
