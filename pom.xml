@@ -32,8 +32,18 @@
 						<password>${anypoint.password}</password>
 						<redeploy>true</redeploy>
 						<environment>${anypoint.environment}</environment>
+						<businessGroup>MYCOMPANY</businessGroup>
 						<workerType>Micro</workerType>
 					</configuration>
+					  <executions>
+				          <execution>
+				            <id>deploy</id>
+				            <phase>deploy</phase>
+				            <goals>
+				              <goal>deploy</goal>
+				            </goals>
+				          </execution>
+				      </executions>
 				<inclusions>
                         <inclusion>
                             <groupId>org.mule.modules</groupId>
